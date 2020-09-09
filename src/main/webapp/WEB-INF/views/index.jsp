@@ -16,30 +16,43 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <style>
         <%@include file='../../css/base.css' %>
-        <%@include file='../../css/main.css' %>
+        <%--        <%@include file='../../css/main.css' %>--%>
     </style>
     <title>Accident</title>
 </head>
 <body>
 <div class="container">
-<table class="table">
-    <thead class="thead-dark">
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach var="item" items="${list}" varStatus="loopCounter" >
-    <tr>
-        <th>${loopCounter.count}</th>
-        <td>
-            ${item}
-        </td>
-    </tr>
-    </c:forEach>
-    </tbody>
-</table>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Text</th>
+            <th scope="col">Address</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="entry" items="${map}" varStatus="loopCounter">
+            <tr>
+                <th>${loopCounter.count}</th>
+                <td>
+                        ${entry.value.id}
+                </td>
+                <td>
+                        ${entry.value.name}
+                </td>
+                <td>
+                        ${entry.value.text}
+                </td>
+                <td>
+                        ${entry.value.address}
+                </td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>
