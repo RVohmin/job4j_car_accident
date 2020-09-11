@@ -13,7 +13,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         <%@include file='../../css/base.css' %>
     </style>
@@ -24,33 +25,41 @@
     <table class="table">
         <thead class="thead-dark">
         <tr>
-            <th scope="col">#</th>
             <th scope="col">id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Text</th>
-            <th scope="col">Address</th>
-            <th scope="col">Action</th>
-
+            <th scope="col">Заявитель</th>
+            <th scope="col">Адрес</th>
+            <th scope="col">№ Автомобиля</th>
+            <th scope="col">Описание</th>
+            <th scope="col">Фото</th>
+            <th scope="col">Статус заявления</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="entry" items="${map}" varStatus="loopCounter">
+        <c:forEach items="${accidents}" var="accident">
             <tr>
-                <th>${loopCounter.count}</th>
                 <td>
-                        ${entry.key}
+                    <c:out value="${accident.id}"/>
                 </td>
                 <td>
-                        ${entry.value.name}
+                    <c:out value="${accident.name}"/>
                 </td>
                 <td>
-                        ${entry.value.text}
+                    <c:out value="${accident.address}"/>
                 </td>
                 <td>
-                        ${entry.value.address}
+                    <c:out value="${accident.carNumber}"/>
                 </td>
                 <td>
-                    <a href='<c:url value="/edit?id=${entry.key}"/>'>
+                    <c:out value="${accident.describe}"/>
+                </td>
+                <td>
+                    <c:out value="${accident.photo}"/>
+                </td>
+                <td>
+                    <c:out value="${accident.status}"/>
+                </td>
+                <td>
+                    <a href='<c:url value="/edit?id=${accident.id}"/>'>
                         <i class="fa fa-edit mr-3"></i>
                     </a>
                 </td>

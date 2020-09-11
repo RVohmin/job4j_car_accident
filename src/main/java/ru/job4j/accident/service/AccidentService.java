@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Service
 public class AccidentService {
     private final AccidentMem mem;
-    private final AtomicInteger id = new AtomicInteger(5);
+    private final AtomicInteger id = new AtomicInteger(0);
 
     public AccidentService(AccidentMem mem) {
         this.mem = mem;

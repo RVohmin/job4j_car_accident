@@ -1,5 +1,6 @@
 package ru.job4j.accident;
 
+import org.apache.log4j.Logger;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
@@ -14,6 +15,7 @@ import javax.servlet.ServletRegistration;
  * Java - конфигурация Spring
  */
 public class WebInit implements WebApplicationInitializer {
+    public final static Logger LOGGER = Logger.getLogger(WebInit.class.getName());
     /**
      *
      * @param servletCxt - servlet
@@ -22,7 +24,7 @@ public class WebInit implements WebApplicationInitializer {
         // получаем контекст context
         var context = new AnnotationConfigWebApplicationContext();
         // регистрируем конфигурационный класс
-        context.register(WebConfig.class);
+        context.register(WebConfig.class, JdbcConfig.class);
         context.refresh();
         // настраиваем кодировку
         var filter = new CharacterEncodingFilter();

@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.job4j.accident.model.Accident;
-import ru.job4j.accident.service.AccidentService;
+import ru.job4j.accident.repository.AccidentJdbcTemplate;
 
 @Controller // указывает, что класс является контроллером
 public class AccidentControl {
-    private final AccidentService service;
+    private final AccidentJdbcTemplate service;
 
-    public AccidentControl(AccidentService service) {
+    public AccidentControl(AccidentJdbcTemplate service) {
         this.service = service;
     }
 

@@ -9,22 +9,39 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <body>
-<form  action="<c:url value='/save'/>" method='POST'>
+<form action="<c:url value='/save'/>" method='POST'>
     <table>
         <tr>
-            <td>Название:</td>
-            <td><label>
-                <input type='text' name='name'>
-            </label>Имя</td>
-            <td><label>
-                <input type='text' name='text'>
-            </label>Текст</td>
-            <td><label>
-                <input type='text' name='address'>
-            </label>Адрес</td>
+            <td>Новое происшествие:</td>
         </tr>
         <tr>
-            <td colspan='2'><input name="submit" type="submit" value="Сохранить" /></td>
+        <td><label> Заявитель
+            <input type='text' name='name'>
+        </label>
+        </td>
+        <td><label>Адрес
+            <input type='text' name='address'>
+        </label>
+        </td>
+        <td><label>Номер авто
+            <input type='text' name='carNumber'>
+        </label>
+        </td>
+            <td><label>Описание
+                <input type='text' name='describe'>
+            </label>
+            </td>
+            <td><label>Фото
+                <input type='text' name='photo'>
+            </label>
+            </td>
+            <td><label>Статус
+                <input type='text' name='status'>
+            </label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan='2'><input name="submit" type="submit" value="Сохранить"/></td>
         </tr>
     </table>
 </form>

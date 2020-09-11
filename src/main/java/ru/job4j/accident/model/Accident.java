@@ -8,17 +8,22 @@ import java.util.Objects;
 public class Accident {
     private int id;
     private String name;
-    private String text;
     private String address;
+    private int carNumber;
+    private String describe;
+    private String photo;
+    private String status;
 
     public Accident() {
     }
 
-    public Accident(int id, String name, String text, String address) {
-        this.id = id;
+    public Accident(String name, String address, int carNumber, String describe, String photo, String status) {
         this.name = name;
-        this.text = text;
         this.address = address;
+        this.carNumber = carNumber;
+        this.describe = describe;
+        this.photo = photo;
+        this.status = status;
     }
 
     public int getId() {
@@ -37,14 +42,6 @@ public class Accident {
         this.name = name;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
     public String getAddress() {
         return address;
     }
@@ -53,13 +50,47 @@ public class Accident {
         this.address = address;
     }
 
+    public int getCarNumber() {
+        return carNumber;
+    }
+
+    public void setCarNumber(int carNumber) {
+        this.carNumber = carNumber;
+    }
+
+    public String getDescribe() {
+        return describe;
+    }
+
+    public void setDescribe(String describe) {
+        this.describe = describe;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
-        return "Accident{"
-                + "id=" + id
+        return "Accident{" + "id=" + id
                 + ", name='" + name + '\''
-                + ", text='" + text + '\''
-                + ", address='" + address + '\'' + '}';
+                + ", address='" + address + '\''
+                + ", carNumber=" + carNumber
+                + ", describe='" + describe + '\''
+                + ", photo='" + photo + '\''
+                + ", status='" + status + '\'' + '}';
     }
 
     @Override
@@ -71,7 +102,13 @@ public class Accident {
             return false;
         }
         Accident accident = (Accident) o;
-        return id == accident.id;
+        return id == accident.id
+                && carNumber == accident.carNumber
+                && name.equals(accident.name)
+                && address.equals(accident.address)
+                && describe.equals(accident.describe)
+                && Objects.equals(photo, accident.photo)
+                && status.equals(accident.status);
     }
 
     @Override
