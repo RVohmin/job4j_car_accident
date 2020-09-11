@@ -8,7 +8,7 @@
   <artifactId>accident</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
-  <name>accident Maven Webapp</name>
+  <name>accident</name>
 
 
   <properties>
@@ -16,14 +16,17 @@
     <maven.compiler.source>14</maven.compiler.source>
     <maven.compiler.target>14</maven.compiler.target>
     <spring.version>5.2.8.RELEASE</spring.version>
+    <sl4j-version>1.7.30</sl4j-version>
   </properties>
 
   <dependencies>
+    <!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>jstl</artifactId>
       <version>1.2</version>
     </dependency>
+
 
     <dependency>
       <groupId>javax.servlet</groupId>
@@ -61,12 +64,34 @@
       <artifactId>spring-context</artifactId>
       <version>${spring.version}</version>
     </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>jcl-over-slf4j</artifactId>
+      <version>${sl4j-version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${sl4j-version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>${sl4j-version}</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/javax.servlet/jsp-api -->
+
   </dependencies>
 
   <build>
