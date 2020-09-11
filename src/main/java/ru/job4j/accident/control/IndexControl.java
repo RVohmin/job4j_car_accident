@@ -3,7 +3,7 @@ package ru.job4j.accident.control;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import ru.job4j.accident.repository.AccidentJdbcTemplate;
+import ru.job4j.accident.repository.AccidentHibernate;
 
 @Controller
 public class IndexControl {
@@ -20,18 +20,14 @@ public class IndexControl {
 //        return "index";
 //    }
 
-    private final AccidentJdbcTemplate accidents;
+    private final AccidentHibernate accidents;
 
-    public IndexControl(AccidentJdbcTemplate accidents) {
+    public IndexControl(AccidentHibernate accidents) {
         this.accidents = accidents;
     }
 
     @GetMapping("/")
     public String index(Model model) {
-//        List<Accident> accidents = this.accidents.getAll();
-//        for (Accident item: accidents) {
-//            System.out.println(item);
-//        }
         model.addAttribute("accidents", accidents.getAll());
         return "index";
     }
