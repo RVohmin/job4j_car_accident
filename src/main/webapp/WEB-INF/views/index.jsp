@@ -22,6 +22,11 @@
 </head>
 <body>
 <div class="container">
+    <div>
+
+        <a class="btn btn-light" href="<c:url value='/logout'/>">Login as :
+            ${user.username} | Выйти</a>
+    </div>
     <table class="table">
         <thead class="thead-dark">
         <tr>
