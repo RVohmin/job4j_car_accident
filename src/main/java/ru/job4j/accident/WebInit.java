@@ -25,7 +25,7 @@ public class WebInit implements WebApplicationInitializer {
         // получаем контекст context
         var context = new AnnotationConfigWebApplicationContext();
         // регистрируем конфигурационный класс
-        context.register(WebConfig.class, DataConfig.class);
+        context.register(WebConfig.class, SecurityConfig.class, DataConfig.class);
         context.refresh();
         // настраиваем кодировку
         var filter = new CharacterEncodingFilter();
