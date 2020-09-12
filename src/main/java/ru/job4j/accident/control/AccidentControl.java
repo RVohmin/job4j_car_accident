@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.job4j.accident.model.Accident;
-import ru.job4j.accident.repository.AccidentHibernate;
+import ru.job4j.accident.repository.AccidentRepository;
 
 @Controller // указывает, что класс является контроллером
 public class AccidentControl {
-    private final AccidentHibernate service;
+    private final AccidentRepository service;
 
-    public AccidentControl(AccidentHibernate service) {
+    public AccidentControl(AccidentRepository service) {
         this.service = service;
     }
 
@@ -31,14 +31,14 @@ public class AccidentControl {
 
     @GetMapping("/edit")
     public String edit(@RequestParam("id") int id, Model model) {
-        Accident accident = service.getAccidentById(id);
+        Accident accident = service.findById(id).isPresent() ? service.findById(id).get() : new Accident();
         model.addAttribute(accident);
         return "accident/edit";
     }
 
     @PostMapping("/update")
     public String update(@ModelAttribute Accident accident) {
-        service.update(accident);
+        service.save(accident);
         return "redirect:/";
     }
 }

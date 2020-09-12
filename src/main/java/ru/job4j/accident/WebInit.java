@@ -5,6 +5,7 @@ import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.DispatcherServlet;
+import ru.job4j.accident.config.DataConfig;
 import ru.job4j.accident.config.WebConfig;
 
 import javax.servlet.FilterRegistration;
@@ -24,7 +25,7 @@ public class WebInit implements WebApplicationInitializer {
         // получаем контекст context
         var context = new AnnotationConfigWebApplicationContext();
         // регистрируем конфигурационный класс
-        context.register(WebConfig.class, HbmConfig.class);
+        context.register(WebConfig.class, DataConfig.class);
         context.refresh();
         // настраиваем кодировку
         var filter = new CharacterEncodingFilter();

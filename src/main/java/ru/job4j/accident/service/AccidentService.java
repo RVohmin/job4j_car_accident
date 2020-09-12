@@ -26,7 +26,7 @@ public class AccidentService {
         getMem().put(id, accident);
     }
 
-    public Accident getAccidentById(int id) {
+    public Accident findById(int id) {
         return getMem().get(id);
     }
 
