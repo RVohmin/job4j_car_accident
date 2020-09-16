@@ -26,11 +26,11 @@ public class AccidentService {
         getMem().put(id, accident);
     }
 
-    public Accident findById(int id) {
+    public Accident findAccidentById(int id) {
         return getMem().get(id);
     }
 
-    public void update(Accident accident) {
+    public void updateAccident(Accident accident) {
         getMem().put(accident.getId(), accident);
     }
 }

@@ -14,33 +14,34 @@ public class AccidentJdbcTemplate {
     }
 
     public Accident save(Accident accident) {
-        jdbc.update("insert into accident (name, address, carnumber, describe, photo, status) "
+        jdbc.update("insert into accident (name, address, carnumber, describe, statusID) "
                         + "values (?, ?, ?, ?, ?, ?)",
                 accident.getName(), accident.getAddress(), accident.getCarNumber(),
-                accident.getDescribe(), accident.getPhoto(), accident.getStatus());
+                accident.getDescribe(),  accident.getStatus());
         return accident;
     }
 
-    public Accident getAccidentById(int id) {
-        return jdbc.queryForObject("select * from accident where id = ?",
-                (rs, row) -> {
-                    Accident accident = new Accident();
-                    accident.setId(rs.getInt("id"));
-                    accident.setName(rs.getString("name"));
-                    accident.setAddress(rs.getString("address"));
-                    accident.setCarNumber(rs.getInt("carnumber"));
-                    accident.setDescribe(rs.getString("describe"));
-                    accident.setPhoto(rs.getString("photo"));
-                    accident.setStatus(rs.getString("status"));
-                    return accident;
-                }, id);
-    }
+//    public Accident getAccidentById(int id) {
+//        return jdbc.queryForObject("select * from accident where id = ?",
+//                (rs, row) -> {
+//                    Accident accident = new Accident();
+//                    accident.setId(rs.getInt("id"));
+//                    accident.setName(rs.getString("name"));
+//                    accident.setAddress(rs.getString("address"));
+//                    accident.setCarNumber(rs.getInt("carnumber"));
+//                    accident.setDescribe(rs.getString("describe"));
+////                    accident.setPhoto(rs.getString("photo"));
+//                    accident.setStatus(rs.getInt("statusID"));
+//                    return accident;
+//                }, id);
+//    }
 
     public void update(Accident accident) {
-        String query = "update accident set name = ?, address = ?, carNumber = ?, describe = ?, photo = ?, status = ? where id = ?";
+        String query = "update accident set name = ?, address = ?, carNumber = ?, describe = ?, "
+                + "statusID = ? where id = ?";
         jdbc.update(query,
                 accident.getName(), accident.getAddress(), accident.getCarNumber(),
-                accident.getDescribe(), accident.getPhoto(), accident.getStatus(), accident.getId());
+                accident.getDescribe(), accident.getStatus(), accident.getId());
     }
 
     public List<Accident> getAll() {
@@ -50,10 +51,10 @@ public class AccidentJdbcTemplate {
                     accident.setId(rs.getInt("id"));
                     accident.setName(rs.getString("name"));
                     accident.setAddress(rs.getString("address"));
-                    accident.setCarNumber(rs.getInt("carnumber"));
+                    accident.setCarNumber(rs.getString("carnumber"));
                     accident.setDescribe(rs.getString("describe"));
-                    accident.setPhoto(rs.getString("photo"));
-                    accident.setStatus(rs.getString("status"));
+//                    accident.setPhoto(rs.getString("photo"));
+//                    accident.setStatus(rs.getString("status"));
                     return accident;
                 });
     }

@@ -35,8 +35,10 @@
             <th scope="col">Адрес</th>
             <th scope="col">№ Автомобиля</th>
             <th scope="col">Описание</th>
-            <th scope="col">Фото</th>
+<%--            <th scope="col">Фото</th>--%>
             <th scope="col">Статус заявления</th>
+            <th scope="col">Опции</th>
+
         </tr>
         </thead>
         <tbody>
@@ -57,15 +59,18 @@
                 <td>
                     <c:out value="${accident.describe}"/>
                 </td>
+<%--                <td>--%>
+<%--                    <c:out value="${accident.photo}"/>--%>
+<%--                </td>--%>
                 <td>
-                    <c:out value="${accident.photo}"/>
-                </td>
-                <td>
-                    <c:out value="${accident.status}"/>
+                    <c:out value="${accident.status.name}"/>
                 </td>
                 <td>
                     <a href='<c:url value="/edit?id=${accident.id}"/>'>
                         <i class="fa fa-edit mr-3"></i>
+                    </a>
+                    <a href='<c:url value="/delete?id=${accident.id}"/>'>
+                        <span class="glyphicon glyphicon-trash"></span> <i class="fa fa-trash "></i>
                     </a>
                 </td>
             </tr>

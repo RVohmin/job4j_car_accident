@@ -15,29 +15,39 @@
             <td>Новое происшествие:</td>
         </tr>
         <tr>
-        <td><label> Заявитель
-            <input type='text' name='name'>
-        </label>
-        </td>
-        <td><label>Адрес
-            <input type='text' name='address'>
-        </label>
-        </td>
-        <td><label>Номер авто
-            <input type='text' name='carNumber'>
-        </label>
-        </td>
+            <td><label> Заявитель
+                <input type='text' name='name'>
+            </label>
+            </td>
+            <td><label>Адрес
+                <input type='text' name='address'>
+            </label>
+            </td>
+            <td><label>Номер авто
+                <input type='text' name='carNumber'>
+            </label>
+            </td>
             <td><label>Описание
                 <input type='text' name='describe'>
             </label>
             </td>
-            <td><label>Фото
-                <input type='text' name='photo'>
-            </label>
-            </td>
-            <td><label>Статус
-                <input type='text' name='status'>
-            </label>
+            <%--            <td>--%>
+            <%--                <label>Фото--%>
+            <%--                    <input type='text' name='photo'>--%>
+            <%--                </label>--%>
+            <%--            </td>--%>
+            <td>
+                <label for="stat">Статус:</label>
+                <select class="form-control" name="statusID" id="stat">
+                    <c:forEach var="state" items="${statuses}" >
+                        <option value="${state.id}">
+                            <c:out value="${state.id}"/>. <c:out value="${state.name}"/>
+                        </option>
+                    </c:forEach>
+                </select>
+<%--                <label>Статус--%>
+<%--                    <input type='text' name='status'>--%>
+<%--                </label>--%>
             </td>
         </tr>
         <tr>

@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <body>
-<form action="<c:url value='/update'/>" method='POST'>
+<form action="<c:url value='/save'/>" method='POST'>
     <table>
         <tr>
         <tr>
@@ -41,18 +41,23 @@
                 </label>
             </td>
         </tr>
+<%--        <tr>--%>
+<%--            <td>--%>
+<%--                <label>Фото--%>
+<%--                    <input type='text' name='photo' value="${accident.photo}">--%>
+<%--                </label>--%>
+<%--            </td>--%>
+<%--        </tr>--%>
         <tr>
             <td>
-                <label>Фото
-                    <input type='text' name='photo' value="${accident.photo}">
-                </label>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label>Статус
-                    <input type='text' name='status' value="${accident.status}">
-                </label>
+                <label for="stat">Статус:</label>
+                <select class="form-control" name="statusID" id="stat">
+                    <c:forEach var="state" items="${statuses}" >
+                        <option value="${state.id}">
+                            <c:out value="${state.id}"/>. <c:out value="${state.name}"/>
+                        </option>
+                    </c:forEach>
+                </select>
             </td>
         </tr>
         <tr>

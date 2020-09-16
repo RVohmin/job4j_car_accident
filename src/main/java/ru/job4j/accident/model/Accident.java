@@ -12,20 +12,22 @@ public class Accident {
     @Column(name = "name")
     private String name;
     private String address;
-    private int carNumber;
+    private String carNumber;
     private String describe;
-    private String photo;
-    private String status;
+    //    private String photo;
+    @ManyToOne
+    @JoinColumn(name = "statusID")
+    private Status status;
 
     public Accident() {
     }
 
-    public Accident(String name, String address, int carNumber, String describe, String photo, String status) {
+    public Accident(String name, String address, String carNumber, String describe, Status status) {
         this.name = name;
         this.address = address;
         this.carNumber = carNumber;
         this.describe = describe;
-        this.photo = photo;
+//        this.photo = photo;
         this.status = status;
     }
 
@@ -53,11 +55,11 @@ public class Accident {
         this.address = address;
     }
 
-    public int getCarNumber() {
+    public String getCarNumber() {
         return carNumber;
     }
 
-    public void setCarNumber(int carNumber) {
+    public void setCarNumber(String carNumber) {
         this.carNumber = carNumber;
     }
 
@@ -69,19 +71,11 @@ public class Accident {
         this.describe = describe;
     }
 
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
-
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -92,7 +86,7 @@ public class Accident {
                 + ", address='" + address + '\''
                 + ", carNumber=" + carNumber
                 + ", describe='" + describe + '\''
-                + ", photo='" + photo + '\''
+//                + ", photo='" + photo + '\''
                 + ", status='" + status + '\'' + '}';
     }
 
@@ -110,7 +104,7 @@ public class Accident {
                 && name.equals(accident.name)
                 && address.equals(accident.address)
                 && describe.equals(accident.describe)
-                && Objects.equals(photo, accident.photo)
+//                && Objects.equals(photo, accident.photo)
                 && status.equals(accident.status);
     }
 
