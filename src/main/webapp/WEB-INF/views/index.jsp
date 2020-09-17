@@ -17,18 +17,19 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         <%@include file='../../css/base.css' %>
+        <%@include file='../../css/main.css' %>
+
     </style>
     <title>Accident</title>
 </head>
 <body>
 <div class="container">
-    <div>
-
-        <a class="btn btn-light" href="<c:url value='/logout'/>">Login as :
+    <div class="alert alert-success" role="alert">
+        <a href="<c:url value='/logout'/>">Login as :
             ${user.username} | Выйти</a>
     </div>
-    <table class="table">
-        <thead class="thead-dark">
+    <table class="table table-sm table-striped table-bordered table-hover">
+        <thead class="thead-light">
         <tr>
             <th scope="col">id</th>
             <th scope="col">Заявитель</th>
@@ -60,7 +61,9 @@
                     <c:out value="${accident.describe}"/>
                 </td>
                 <td>
-                    <img src="<c:url value='/image/${accident.fileName}'/>" alt="File">
+                    <img src="<c:url value='/show?name=${accident.fileName}'/>" alt="File"
+                         width="150px"
+                         height="150px">
                 </td>
                 <td>
                     <c:out value="${accident.status.name}"/>
@@ -70,7 +73,8 @@
                         <i class="fa fa-edit mr-3"></i>
                     </a>
                     <a href='<c:url value="/delete?id=${accident.id}"/>'>
-                        <span class="glyphicon glyphicon-trash"></span> <i class="fa fa-trash "></i>
+                        <span class="glyphicon glyphicon-trash"></span> <i class="fa fa-trash"
+                                                                           style="color: red"></i>
                     </a>
                 </td>
             </tr>

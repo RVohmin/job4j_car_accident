@@ -1,6 +1,7 @@
 package ru.job4j.accident.control;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +37,7 @@ public class AccidentControl {
     @GetMapping("/create")
     public String create(Model model) {
         statusRepository.findAll().forEach(System.out::println);
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         model.addAttribute("statuses", statusRepository.findAll());
         return "accident/create";
     }
@@ -43,12 +45,10 @@ public class AccidentControl {
     @PostMapping("/save")
     public String save(@RequestParam("file") MultipartFile file,
                        @ModelAttribute Accident accident,
-                       HttpServletRequest request, Model model) throws Exception {
+                       HttpServletRequest request) throws Exception {
         String id = request.getParameter("statusID");
 
         if (file != null) {
-            File uploadFolder = new File(uploadPath);
-//            String uuidFile = UUID.randomUUID().toString();
             String resultFileName = file.getOriginalFilename();
             file.transferTo(new File(uploadPath + "/" + resultFileName));
             accident.setFileName(resultFileName);
@@ -60,13 +60,14 @@ public class AccidentControl {
     }
 
     @GetMapping("/show")
-    public void show(HttpServletRequest req, HttpServletResponse resp) {
+    public void getFile(HttpServletRequest req, HttpServletResponse resp) {
         String name = req.getParameter("name");
+        System.out.println(name);
         resp.setContentType("name=" + name);
         resp.setContentType("image/png");
         resp.setHeader("Content-Disposition",
                 "attachment; filename=" + File.pathSeparator + name);
-        File file = new File("images" + File.separator + name);
+        File file = new File(uploadPath + File.separator + name);
         try (FileInputStream in = new FileInputStream(file)) {
             resp.getOutputStream().write(in.readAllBytes());
         } catch (IOException e) {

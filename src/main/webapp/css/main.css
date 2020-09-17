@@ -65,40 +65,35 @@ textarea::-moz-placeholder {
 label {
     margin: 0;
 }
-.btn-primary {
-    width: 5rem!important;
+.container {
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
 }
 .wrapper__content {
-    padding-top: 0!important;
+    /*padding-top: 0!important;*/
+    display: flex;
+    justify-content: center;
+    vertical-align: center;
+    align-items: center;
 }
 .btn-light {
     margin: 7px;
 }
+
 .dropdown-menu.show {
     width: 300px;
     left: -45px!important;
 }
-.btn-primary {
-    width: 300px;
-}
+
 .form-control {
     margin-right: 15px;
     padding: 0;
     padding-left: 0.4rem;
 }
-.btn {
-    padding: 0 5px 0 5px;
-    margin-right: 10px;
-}
 
-.jumbotron {
-    margin: 0;
-}
 .card-img-top {
     height: 12em;
-}
-.alert {
-    margin-bottom: 0;
 }
 .list-group-item {
     padding: 0;
@@ -149,11 +144,11 @@ label {
 }
 
 .alert-success {
-    padding: 0;
-    margin: 0;
+    /*padding: 0;*/
+    /*margin: 0;*/
     font-size: 14px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
 .button {
