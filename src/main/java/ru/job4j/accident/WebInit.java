@@ -22,6 +22,7 @@ public class WebInit implements WebApplicationInitializer {
      * @param servletCxt - servlet
      */
     public void onStartup(ServletContext servletCxt) {
+
         // получаем контекст context
         var context = new AnnotationConfigWebApplicationContext();
         // регистрируем конфигурационный класс

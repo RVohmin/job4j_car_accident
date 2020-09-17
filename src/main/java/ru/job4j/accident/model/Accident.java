@@ -14,20 +14,21 @@ public class Accident {
     private String address;
     private String carNumber;
     private String describe;
-    //    private String photo;
-    @ManyToOne
+    private String fileName;
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "statusID")
     private Status status;
 
     public Accident() {
     }
 
-    public Accident(String name, String address, String carNumber, String describe, Status status) {
+
+    public Accident(String name, String address, String carNumber, String describe, String fileName, Status status) {
         this.name = name;
         this.address = address;
         this.carNumber = carNumber;
         this.describe = describe;
-//        this.photo = photo;
+        this.fileName = fileName;
         this.status = status;
     }
 
@@ -79,6 +80,14 @@ public class Accident {
         this.status = status;
     }
 
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
     @Override
     public String toString() {
         return "Accident{" + "id=" + id
@@ -86,7 +95,7 @@ public class Accident {
                 + ", address='" + address + '\''
                 + ", carNumber=" + carNumber
                 + ", describe='" + describe + '\''
-//                + ", photo='" + photo + '\''
+                + ", photo='" + fileName + '\''
                 + ", status='" + status + '\'' + '}';
     }
 

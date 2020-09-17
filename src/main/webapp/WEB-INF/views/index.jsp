@@ -35,7 +35,7 @@
             <th scope="col">Адрес</th>
             <th scope="col">№ Автомобиля</th>
             <th scope="col">Описание</th>
-<%--            <th scope="col">Фото</th>--%>
+            <th scope="col">Фото</th>
             <th scope="col">Статус заявления</th>
             <th scope="col">Опции</th>
 
@@ -59,9 +59,9 @@
                 <td>
                     <c:out value="${accident.describe}"/>
                 </td>
-<%--                <td>--%>
-<%--                    <c:out value="${accident.photo}"/>--%>
-<%--                </td>--%>
+                <td>
+                    <img src="<c:url value='/image/${accident.fileName}'/>" alt="File">
+                </td>
                 <td>
                     <c:out value="${accident.status.name}"/>
                 </td>
